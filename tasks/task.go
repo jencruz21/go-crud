@@ -28,13 +28,18 @@ var Tasks []Task
 func Init() {
 	Tasks = []Task{}
 }
+
 /**
+	Creates a task and return if the task is created
 */
 func CreateTask(task Task) bool {
 	Tasks = append(Tasks, task)
 	return slices.Contains(Tasks, task)
 }
 
+/**
+	Updates a task
+*/
 func UpdateTask(task Task) bool {
 	for i := 0; i <= len(Tasks); i++ {
 		if Tasks[i].ID == task.ID {
@@ -45,10 +50,16 @@ func UpdateTask(task Task) bool {
 	return false
 }
 
+/**
+	Retrieves all the task
+*/
 func GetTasks() []Task {
 	return Tasks
 }
 
+/**
+	Get Task by its Id
+*/
 func GetTaskByID (task Task) Task {
 	for i := 0; i <= len(Tasks); i++ {
 		if Tasks[i].ID == task.ID {
@@ -58,6 +69,9 @@ func GetTaskByID (task Task) Task {
 	return Task{}
 }
 
+/**
+	Update the task status
+*/
 func UpdateStatusOfTask (task Task, status Status) Task {
 	for i := 0; i <= len(Tasks); i++ {
 		if Tasks[i].ID == task.ID {
